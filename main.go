@@ -11,7 +11,7 @@ import (
 )
 
 var (
-	basePath = "/home/weiss/Documents/Boardgames/arkham-horror/ah-maker/"
+	basePath = "D:\\Arkham horror"
 	trPath   = path.Join(basePath, "static", "translated", "archive.json")
 	tmplPath = path.Join(basePath, "static", "template", "archive-karten.html")
 )
