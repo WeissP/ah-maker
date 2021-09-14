@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8">
+    <title>archive-karten</title>
+    <style>
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 2.25rem;
+        }
+
+        h3 {
+            font-size: 2rem;
+        }
+
+        h4 {
+            font-size: 1.75rem;
+        }
+
+        h5 {
+            font-size: 1.5rem;
+        }
+
+        h6 {
+            font-size: 1.25rem;
+        }
+
+        p {
+            font-size: 1rem;
+        }
+
+        @media (max-width: 480px) {
+            html {
+                font-size: 18px;
+            }
+        }
+
+        @media (min-width: 480px) {
+            html {
+                font-size: 18px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            html {
+                font-size: 18px;
+            }
+        }
+
+        @media (min-width: 992px) {
+            html {
+                font-size: 18px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            html {
+                font-size: 17px;
+            }
+        }
+
+        #toc_container {
+            background: #f9f9f9 none repeat scroll 0 0;
+            border: 1px solid #aaa;
+            display: table;
+            font-size: 1.75rem;
+            margin-bottom: 1em;
+            padding: 20px;
+            width: auto;
+        }
+
+        .toc_title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        #toc_container li,
+        #toc_container ul,
+        #toc_container ul li {
+            list-style: outside none none !important;
+        }
+
+        details {
+            user-select: none;
+        }
+
+        details>summary span.icon {
+            width: 24px;
+            height: 24px;
+            transition: all 0.3s;
+        }
+
+        details[open] summary span.icon {
+            transform: rotate(90deg);
+        }
+
+        summary {
+            font-size: 1.25rem;
+            display: flex;
+            cursor: pointer;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="toc_container">
+        <p class="toc_title"> Contents </p>
+        <ul class="toc_list">
+            {{range .ArchiveKarten}}
+            <li> <a href="#{{.Id}}">{{.Id}}: {{.Title}} </a> </li>
+            {{end}}
+        </ul>
+    </div>
+    <h2> Archive Karten </h2>
+    {{range .ArchiveKarten}}
+    <h3 id="{{.Id}}"> {{.Id}}: {{.Title}} </h3>
+    <details>
+        <summary>
+            front: <span class="icon">► </span>
+        </summary>
+        {{range .Front}}
+        <p>
+            {{.}}
+        </p>
+        {{end}}
+    </details>
+    {{if .Back}}
+    <details>
+        <summary>
+            back: <span class="icon">► </span>
+        </summary>
+        {{range .Back}}
+        <p>
+            {{.}}
+        </p>
+        {{end}}
+    </details>
+    {{end}}
+    {{end}}
+</body>
